@@ -28,9 +28,12 @@ type network struct{
 }
 
 func (l *layer) addBias(){
+
 	for i := range l.neuron {
+
 		l.neuron[i].valueOutput = l.bias*l.weightBias + l.neuron[i].valueInput*l.neuron[i].weight
 	}
+
 }
 
 func (l *layer) print(){
@@ -125,17 +128,19 @@ func main(){
 
 	n.layer[0].bias = 1.0
 	n.layer[1].bias = 1.0
+	n.layer[2].bias = 1.0
 
 	n.forwardPropagation()
 
 	for i := range n.layer {
 		fmt.Println("Layer -",i)
+		
 		for j := range n.layer[i].neuron {
 			fmt.Printf("Neuronio[%d]:\n", j )
 			fmt.Printf("Entrada:%f\n", n.layer[i].neuron[j].valueInput )
+			fmt.Printf("weight:%f\n", n.layer[i].neuron[j].weight )
 			fmt.Printf("Saída:%f\n\n", n.layer[i].neuron[j].valueOutput )
 		}
 	}
 
 }
-
